@@ -1,0 +1,49 @@
+
+xmas-song-list {
+  .xmas-song-list {
+    padding: 0;
+
+    .mat-list-item {
+      --list-border-color: rgba(0,0,0,.12);
+      --list-height: 72px;
+      --list-gutter: 24px;
+      --list-font-size: 24px;
+
+      @media only screen and (max-width: 728px) {
+        --list-heigt: 60px;
+        --list-gutter: 12px;
+      }
+
+      position: relative;
+      border-bottom: 1px solid var(--list-border-color);
+      line-height: var(--list-height);
+      font-size: var(--list-font-size);
+      height: var(--list-height); // override default
+
+
+      &:first-child {
+        border-top-color: transparent;
+      }
+
+      mat-icon {
+        position: absolute;
+        top: 50%;
+        right: var(--list-gutter);
+        transform: translateY(-50%);
+      }
+      .xmas-song-list-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: calc(100% - var(--list-gutter) - 24px);
+      }
+
+      .mat-list-item-content {
+        padding: 0 var(--list-gutter);
+      }
+    }
+  }
+}
+
+
+

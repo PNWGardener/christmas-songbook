@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use './theme/list' as list;
+
+@include mat.core();
+// @include list.song-list();
+
+$xmas-primary: mat.define-palette(mat.$red-palette, 500);
+$xmas-accent: mat.define-palette(mat.$green-palette, 500);
+
+$xmas-theme: mat.define-light-theme((
+ color: (
+   primary: $xmas-primary,
+   accent: $xmas-accent,
+ )
+));
+
+// Emit theme-dependent styles for common features used across multiple components.
+@include mat.core-theme($xmas-theme);
+@include mat.all-component-themes($xmas-theme);
+
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+

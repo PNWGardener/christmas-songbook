@@ -1,0 +1,41 @@
+@mixin song-list {
+  .xmas-song-list {
+    padding: 0;
+
+    .mat-list-item {
+      --list-border-color: rgba(0,0,0,.12);
+      --list-height: 72px;
+      --list-gutter: 48px;
+      --list-font-size: 24px;
+
+      @media only screen and (max-width: 728px) {
+        --list-heigt: 60px;
+        --list-gutter: 12px;
+      }
+
+      position: relative;
+      border-bottom: 1px solid var(--border-color);
+      line-height: var(--list-height);
+      font-size: var(--list-font-size);
+      height: var(--list-height); // override default
+
+      &:first-child {
+        border-top-color: transparent;
+      }
+
+      mat-icon {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+      }
+
+      > .mat-list-item-content {
+        padding: 0 var(--list-gutter);
+      }
+    }
+
+
+  }
+}
+

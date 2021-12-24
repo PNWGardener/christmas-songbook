@@ -1,0 +1,9 @@
+
+<mat-action-list class="xmas-song-list">
+  <button mat-list-item  [routerLink]="['/songs', song.id]" *ngFor="let song of songs">
+    <div class="xmas-song-list-text">
+      {{song.title}}
+    </div>
+    <mat-icon>arrow_forward_ios</mat-icon>
+  </button>
+</mat-action-list>
