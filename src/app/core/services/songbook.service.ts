@@ -13,7 +13,7 @@ export class Songbook {
   }
 
   getSongs() {
-    return this.songs.sort((a, b) => a.title < b.title ? 1 : -1)
+    return this.songs.sort((a, b) => a.title >= b.title ? 1 : -1)
   }
 
   getSong(id: string) {

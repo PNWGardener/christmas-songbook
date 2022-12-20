@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
-@use './theme/list' as list;
+@use 'styles/layout' as layout;
 
 @include mat.core();
 // @include list.song-list();
@@ -19,6 +19,7 @@ $xmas-theme: mat.define-light-theme((
 @include mat.core-theme($xmas-theme);
 @include mat.all-component-themes($xmas-theme);
 
+// 64 -> 56
 
 html, body {
   padding: 0;
@@ -26,3 +27,51 @@ html, body {
   height: 100%;
 }
 
+.xmas-page-header {
+  padding: 24px;
+  // background: #f2f2f2;
+  // position: fixed;
+  // left: 0;
+  // right: 0;
+  z-index: 100;
+}
+
+.xmas-page {
+  height: 100vh;
+  background-color: #fff;
+  @include layout.abs-fill();
+}
+
+.xmas-page-body {
+  padding: 0 0 48px;
+  overflow-y: auto;
+
+  background: linear-gradient(to bottom,  #ffffff 0%,#7db9e833 100%);
+
+  @media only screen and (max-width: 728px) {
+    padding: 0 0 24px;
+  }
+}
+
+.xmas-page-footer {
+  flex: 0 0 auto;
+  height: 48px;
+
+  .snow-hill {
+    filter: drop-shadow( -8px -5px 8px rgba(0, 0, 0, .7));
+  }
+}
+
+.xmas-page-title {
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1em;
+  margin: 0;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}

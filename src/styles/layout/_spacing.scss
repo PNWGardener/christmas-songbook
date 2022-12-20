@@ -1,0 +1,53 @@
+@import './breakpoints';
+
+$layout-margin-mobile:      16px;
+$layout-margin-tablet:      32px;
+$layout-margin-desktop:     80px;
+$layout-margin-widescreen:  200px;
+
+$layout-margin-map: (
+  'mobile': $layout-margin-mobile,
+  'tablet': $layout-margin-tablet,
+  'desktop': $layout-margin-desktop,
+  'widescreen': $layout-margin-widescreen
+);
+
+$layout-gutter-mobile:      24px;
+$layout-gutter-tablet:      32px;
+$layout-gutter-desktop:     32px;
+$layout-gutter-widescreen:  40px;
+
+$layout-gutter-map: (
+  'mobile': $layout-gutter-mobile,
+  'tablet': $layout-gutter-tablet,
+  'desktop': $layout-gutter-desktop,
+  'widescreen': $layout-gutter-widescreen
+);
+
+
+@mixin layout-margin($prop: padding) {
+  @if(list-contains((padding, margin), $prop)) {
+    @each $breakpoint, $margin in $layout-margin-map {
+      @include respond-to($breakpoint) {
+        #{$prop}-left: $margin;
+        #{$prop}-right: $margin;
+      }
+    }
+  } @else {
+    @error "The css property #{$prop} is not supported";
+  }
+}
+
+@mixin create-layout-margins {
+  .amrock-margin--page {
+    @include layout-margin()
+  }
+
+  .amrock-margin--section {
+    @include layout-margin()
+  }
+
+  .amrock-margin--page {
+    @include layout-margin()
+  }
+}

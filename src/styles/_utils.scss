@@ -1,0 +1,35 @@
+@function list-contains($list,$value) {
+  @return not not index($list, $value);
+}
+
+@function map-get-or-default($map, $value) {
+  @return map-get-or($map, $value, $value);
+}
+
+@function map-get-or($map, $key, $default) {
+  @if (map-has-key($map, $key)) {
+    @return map-get($map: $map, $key: $key);
+  } @else {
+    @return $default;
+  }
+}
+
+@function ensure($logic, $message) {
+  @if (not $logic) {
+    @error $message;
+  }
+
+  @return $logic;
+}
+
+@function is-map($param) {
+  @return type-of($param) == 'map';
+}
+
+@function is-number($param) {
+  @return type-of($param) == 'number';
+}
+
+@function is-string($param) {
+  @return type-of($param) == 'string';
+}

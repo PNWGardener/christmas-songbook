@@ -1,14 +1,16 @@
 
 <div class="xmas-page" fxLayout="column">
-  <header class="xmas-page-header" fxLayout="row" fxLayoutAlign="start center" fxFlex="none">
-    <h2 fxFlex class="xmas-page-title">{{ song?.title ?? "No song found"}}</h2>
-    <button fxFlex="none" routerLink="/songs" class="xmas-back-button" mat-button>
-      Close
-      <mat-icon>close</mat-icon>
-    </button>
-  </header>
-  <div class="xmas-page-body" fxLayout="column" fxLayoutAlight="start center" fxLayoutGap="24px" fxFlex>
-    <div class="xmas-song-lyrics" fxFlex>
+  <mat-toolbar color="primary" class="mat-elevation-z8 xmas-page-header" fxLayout="row" fxLayoutAlign="start center" fxFlex="none">
+    <h2 fxFlex class="xmas-page-title text-ellipsis">{{ song?.title ?? "No song found"}}</h2>
+    <div class="xmas-toolbar-actions" fxFlex="none">
+      <button routerLink="/songs" class="xmas-back-button" mat-button>
+        Close
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <div class="xmas-page-body" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="24px" fxFlex>
+    <div class="xmas-song-lyrics" fxFlex="none">
       {{song?.lyrics}}
     </div>
   </div>
