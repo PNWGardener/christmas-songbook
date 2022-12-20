@@ -1,9 +1,18 @@
 
-<mat-action-list class="xmas-song-list">
-  <button mat-list-item  [routerLink]="['/songs', song.id]" *ngFor="let song of songs">
-    <div class="xmas-song-list-text">
-      {{song.title}}
-    </div>
-    <mat-icon>arrow_forward_ios</mat-icon>
-  </button>
-</mat-action-list>
+
+<div class="xmas-page" fxLayout="column">
+  <mat-toolbar color="primary" class="mat-elevation-z8 xmas-page-header" fxLayout="row" fxLayoutAlign="start center" fxFlex="none">
+    <h2 fxFlex class="xmas-page-title">Christmas Songs</h2>
+    <!-- Search here... -->
+  </mat-toolbar>
+  <div class="xmas-page-body" fxLayout="column" fxLayoutAlight="start center" fxLayoutGap="24px" fxFlex>
+    <mat-action-list class="xmas-song-list">
+      <button mat-list-item  [routerLink]="['/songs', song.id]" *ngFor="let song of songs">
+        <div class="xmas-song-list-text">
+          {{song.title}}
+        </div>
+        <mat-icon>arrow_forward_ios</mat-icon>
+      </button>
+    </mat-action-list>
+  </div>
+</div>

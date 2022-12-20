@@ -1,0 +1,93 @@
+
+$breakpoint-names: (mobile, tablet, desktop, widescreen);
+
+$layout-breakpoint-mobile:      768px;
+$layout-breakpoint-tablet:      1024px;
+$layout-breakpoint-desktop:     1440px;
+$layout-breakpoint-widescreen:  1680px;
+
+$breakpoint-map: (
+    mobile: ('max': $layout-breakpoint-mobile),
+    tablet: ('min': $layout-breakpoint-mobile, 'max': $layout-breakpoint-tablet),
+    desktop: ('min': $layout-breakpoint-tablet, 'max': $layout-breakpoint-desktop),
+    widescreen: ('min': $layout-breakpoint-widescreen)
+);
+
+/// Mixin to easily add styles that only appear in mobile mode
+///
+@mixin mobile-only() {
+  @include respond-to(mobile) {
+    @content;
+  }
+}
+
+/// Mixin to easily add styles that only appear in widescreen mode
+///
+@mixin widescreen-only() {
+  @include respond-to(widescreen) {
+    @content;
+  }
+}
+
+/// Mixin to create responsive media selectors for the given breakpoint
+///
+/// @param {String} $name - Breakpoint size name
+@mixin respond-to($name) {
+  @if (map-has-key($breakpoint-map, $name)) {
+    $breakpoint: map-get($breakpoint-map, $name);
+    @include create-breakpoint-media($breakpoint) {
+      @content;
+    };
+  }
+  @else {
+    @error "The breakpoint name doesn't exist in the `$breakpoint-map` variable";
+  }
+}
+
+/// Mixin to create responsive media selectors based on the breakpoint information
+///
+/// @param {Map} $breakpoint - Breakpoint info
+@mixin create-breakpoint-media($breakpoint) {
+  $hasMin: map-has-key($breakpoint, 'min');
+  $hasMax: map-has-key($breakpoint, 'max');
+
+  @if ($hasMin) {
+    @media (min-width: map-get($breakpoint, 'min')) {
+      @content;
+    }
+  }
+  @else if ($hasMax){
+    @media (max-width: map-get($breakpoint, 'max')) {
+      @content;
+    }
+  }
+  @else {
+    @warn "The given breakpoint doesn't have any values";
+  }
+}
+
+/// Mixin to create responsive media selector greater than the breakpoint max width
+///
+/// @param {Map} $breakpoint - Breakpoint info
+@mixin create-gt-breakpoint-media($breakpoint) {
+  $hasMax: map-has-key($breakpoint, 'max');
+
+  @if ($hasMax){
+    @media (min-width: map-get($breakpoint, 'max')) {
+      @content;
+    }
+  }
+}
+
+/// Mixin to create responsive media selector less than the breakpoint min width
+///
+/// @param {Map} $breakpoint - Breakpoint info
+@mixin create-lt-breakpoint-media($breakpoint) {
+  $hasMin: map-has-key($breakpoint, 'min');
+
+  @if ($hasMin){
+    @media (max-width: map-get($breakpoint, 'min')) {
+      @content;
+    }
+  }
+}

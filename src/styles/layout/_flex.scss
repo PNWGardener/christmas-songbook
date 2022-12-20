@@ -1,0 +1,107 @@
+@import '../utils';
+
+//------------------------------------------------------------------------------
+// Flex Mixins
+//------------------------------------------------------------------------------
+
+// Flex Child Layout
+// ------------------------------
+$flex-grow:        1 1 100%;
+$flex-initial:     0 1 auto;
+$flex-auto:        1 1 auto;
+$flex-none:        0 0 auto;
+$flex-noshrink:    1 0 auto;
+$flex-nogrow:      0 1 auto;
+
+$flex-map: (
+    'grow': $flex-grow,
+    'initial': $flex-initial,
+    'auto': $flex-auto,
+    'none': $flex-none
+);
+
+$supported-layout-directions: (row, column, row-reverse, column-reverse);
+$supported-main-axis: (flex-start, center, flex-end, space-around, space-between);
+$supported-cross-axis: (flex-start, center, flex-end, stretch);
+$supported-flex-map-names: (grow, initial, auto, none);
+
+$flex-align-map: (
+  'start': flex-start,
+  'end': flex-end
+);
+
+@mixin flex-layout($direction: row, $wrap: false) {
+  @if(list-contains($supported-layout-directions, $direction)) {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: $direction;
+  } @else {
+    @error "The direction #{$direction} is not supported";
+  }
+
+  @if($wrap) {
+    flex-wrap: $wrap;
+  }
+}
+
+@mixin inline-flex-layout($direction: row, $wrap: false) {
+  @if(list-contains($supported-layout-directions, $direction)) {
+    display: inline-flex;
+    box-sizing: border-box;
+    flex-direction: $direction;
+  } @else {
+    @error "The direction #{$direction} is not supported";
+  }
+
+  @if($wrap) {
+    flex-wrap: $wrap;
+  }
+}
+
+@mixin flex-layout-align($mainAxis: start, $crossAxis: start) {
+  $main: map-get-or-default($flex-align-map, $mainAxis);
+  $cross: map-get-or-default($flex-align-map, $crossAxis);
+
+  justify-content: $main;
+  align-items: $cross;
+  align-content: $cross;
+}
+
+@mixin flex($args: false) {
+  box-sizing: border-box;
+  @if(is-map($args)) {
+    @include flex-from-map($args);
+  } @else if (map-has-key($map: $flex-map, $key: $args)) {
+    flex: map-get($map: $flex-map, $key: $args);
+  } @else if($args == false) {
+    flex: $flex-auto;
+  } @else {
+    flex: $args;
+  }
+}
+
+@mixin flex-none {
+  @include flex($flex-none);
+}
+
+@mixin flex-grow {
+  @include flex($flex-grow);
+}
+
+@mixin flex-auto {
+  @include flex($flex-auto);
+}
+
+@mixin flex-initial {
+  @include flex($flex-initial);
+}
+
+@mixin flex-from-map($map) {
+  @if (ensure(is-map($map), "The given argument must be a map")) {
+    $grow: map-get-or($map, 'grow', 1);
+    $shrink: map-get-or($map, 'shrink', 1);
+    $basis: map-get-or($map, 'basis', auto);
+
+    flex: $grow $shring $basis;
+  }
+}

@@ -1,0 +1,40 @@
+
+
+/// Fill the elements container using absolute positioning
+@mixin abs-fill($dimension: false)
+{
+  position: absolute;
+  @include fill-container;
+}
+
+/// Center an element within it's parent using absolute positioning
+@mixin abs-center($direction: false) {
+  position: absolute;
+  @if($direction == horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if($direction == vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  } @else {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/// Expand an element positioned absolutely or fixed to the dimensions of it's relative container
+@mixin fill-container($dimension: false)
+{
+  @if ($dimension == 'height' or $dimension == false) {
+    top: 0;
+    bottom: 0;
+  }
+
+  @if ($dimension == 'width' or $dimension == false) {
+    left: 0;
+    right: 0;
+  }
+}
+
+
