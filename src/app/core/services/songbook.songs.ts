@@ -732,11 +732,98 @@ export const songs: Song[] = [
     With every Christmas card I write
     May your days be merry and bright`
   },
-  // {
-  //   id: 'id',
-  //   title: 'title',
-  //   lyrics: `lyrics`
-  // },
+  {
+    id: 'let-it-snow',
+    title: 'Let It Snow',
+    lyrics: `Oh, the weather outside is frightful
+      But the fire is so delightful
+      And since we've no place to go
+      Let it snow! Let it snow! Let it snow!
+
+      Man it doesn't show signs of stopping
+      And I brought me some corn for popping
+      The lights are turned way down low
+      Let it snow! Let it snow!
+
+      When we finally kiss goodnight
+      How I'll hate going out in the storm
+      But if you'll really hold me tight
+      All the way home I'll be warm
+
+      And the fire is slowly dying
+      And, my dear, we're still goodbying
+      But as long as you'd love me so
+      Let it snow! Let it snow and snow!
+
+      When we finally kiss goodnight
+      How I'll hate going out in the storm
+      But if you really grab me tight
+      All the way home I'll be warm
+
+      Oh, the fire is slowly dying
+      And, my dear, we're still goodbying
+      But as long as you'd love me so
+      Let it snow, let it snow, let it snow!
+    `
+  },
+  {
+    id: 'santa-coming-to-town',
+    title: 'Santa is Coming to Town',
+    lyrics: `You better watch out
+    You better not cry
+    You better not pout
+    I'm telling you why, Santa Claus is coming to town
+    He's making a list
+    He's checking it twice
+    He's going to find out
+    Who's naughty and nice, Santa Claus is coming to town
+
+    He sees you when you're sleeping
+    He knows when you're awake
+    He knows when you've been bad or good
+    So be good for goodness sake
+
+    You better watch out
+    You better not cry
+    You better not pout
+    I'm telling you why, Santa Claus is coming to town
+    You better watch out
+    You better not cry
+    You better not pout
+    I'm telling you why, Santa Claus is coming to town
+    He's making a list
+    He's checking it twice
+    He's going to find out
+    Who's naughty and nice, Santa Claus is coming to town
+
+    He sees you when you're sleeping
+    He knows when you're awake
+    He knows when you've been bad or good
+    So be good for goodness sake
+
+    You better watch out
+    You better not cry
+    You better not pout
+    I'm telling you why, Santa Claus is coming to town
+
+    He sees you when you're sleeping
+    He knows when you're awake
+    He knows when you've been bad or good
+    So be good for goodness sake
+
+    You better watch out
+    You better not cry
+    You better not pout
+    I'm telling you why, Santa Claus is coming to town
+    He's making a list
+    And checking it twice
+    He's going to find out
+    Who's naughty and nice, Santa Claus is coming
+    Santa Claus is coming, Santa Claus is coming to town
+    Santa Claus is coming to town
+    Santa Claus is coming to town
+    Santa Claus is coming to town`
+  },
   // {
   //   id: 'id',
   //   title: 'title',
